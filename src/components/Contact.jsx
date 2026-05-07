@@ -46,6 +46,9 @@ function Contact() {
       <div className="section-inner narrow">
         <p className="eyebrow">Contact</p>
         <h2>Let’s build something useful.</h2>
+        <a className="contact-email" href="mailto:deepika.chembra18@gmail.com">
+          deepika.chembra18@gmail.com
+        </a>
 
         <form className="contact-form" onSubmit={handleSubmit}>
           <input

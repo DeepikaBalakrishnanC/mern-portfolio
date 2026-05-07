@@ -243,6 +243,17 @@ button {
   margin-inline: auto;
 }
 
+.contact-email {
+  display: inline-flex;
+  margin-top: 4px;
+  color: var(--accent);
+  font-weight: 800;
+}
+
+.contact-email:hover {
+  color: #bae6fd;
+}
+
 .section p {
   color: var(--muted);
   line-height: 1.75;
