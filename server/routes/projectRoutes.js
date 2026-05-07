@@ -6,9 +6,10 @@ const {
   createProject,
   deleteProject
 } = require("../controllers/projectController");
+const { protect } = require("../middleware/authMiddleware");
 
 router.get("/", getProjects);
-router.post("/", createProject);
-router.delete("/:id", deleteProject);
+router.post("/", protect, createProject);
+router.delete("/:id", protect, deleteProject);
 
 module.exports = router;

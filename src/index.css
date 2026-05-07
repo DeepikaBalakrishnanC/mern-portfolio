@@ -424,6 +424,39 @@ textarea:focus {
   margin-bottom: 24px;
 }
 
+.admin-section-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.admin-section-grid .admin-form {
+  width: 100%;
+}
+
+.dashboard-section {
+  margin-top: 42px;
+}
+
+.dashboard-section-title {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: end;
+  margin-bottom: 18px;
+}
+
+.dashboard-section-title h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2vw, 1.8rem);
+}
+
+.dashboard-section-title span {
+  color: var(--muted);
+  font-weight: 700;
+}
+
 .dashboard-grid {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
@@ -447,6 +480,72 @@ textarea:focus {
   margin: 0 16px 16px;
 }
 
+.message-list {
+  display: grid;
+  gap: 16px;
+}
+
+.message-card {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1fr) auto auto;
+  gap: 16px;
+  align-items: start;
+  padding: 18px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.message-card h3,
+.message-card p {
+  margin: 0;
+}
+
+.message-card a,
+.certificate-card a {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.message-card p {
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.message-card small,
+.empty-state {
+  color: var(--muted);
+}
+
+.message-card button {
+  margin-top: 0;
+}
+
+.admin-chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.admin-chip {
+  display: inline-flex;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 8px 8px 14px;
+  background: var(--panel-soft);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-weight: 700;
+}
+
+.admin-chip button {
+  min-height: 34px;
+  padding: 7px 10px;
+  margin-top: 0;
+  font-size: 0.78rem;
+}
+
 @media (max-width: 920px) {
   .hero {
     grid-template-columns: 1fr;
@@ -460,7 +559,8 @@ textarea:focus {
 
   .skills-grid,
   .project-grid,
-  .dashboard-grid {
+  .dashboard-grid,
+  .admin-section-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -471,6 +571,10 @@ textarea:focus {
   .sidebar {
     position: static;
     min-height: auto;
+  }
+
+  .message-card {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -487,7 +591,13 @@ textarea:focus {
   .skills-grid,
   .project-grid,
   .certificate-grid,
-  .dashboard-grid {
+  .dashboard-grid,
+  .admin-section-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dashboard-section-title {
+    align-items: start;
+    flex-direction: column;
   }
 }

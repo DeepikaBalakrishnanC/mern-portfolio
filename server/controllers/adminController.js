@@ -27,4 +27,33 @@ const loginAdmin = async (req, res) => {
   res.json({ token });
 };
 
-module.exports = { loginAdmin };
+const changePassword = async (req, res) => {
+  const { currentPassword, newPassword } = req.body;
+
+  if (!currentPassword || !newPassword) {
+    return res.status(400).json({ message: "Current and new password are required" });
+  }
+
+  if (newPassword.length < 6) {
+    return res.status(400).json({ message: "New password must be at least 6 characters" });
+  }
+
+  const admin = await Admin.findById(req.adminId);
+
+  if (!admin) {
+    return res.status(404).json({ message: "Admin not found" });
+  }
+
+  const isMatch = await bcrypt.compare(currentPassword, admin.password);
+
+  if (!isMatch) {
+    return res.status(400).json({ message: "Current password is wrong" });
+  }
+
+  admin.password = await bcrypt.hash(newPassword, 10);
+  await admin.save();
+
+  res.json({ success: true, message: "Password changed successfully" });
+};
+
+module.exports = { loginAdmin, changePassword };

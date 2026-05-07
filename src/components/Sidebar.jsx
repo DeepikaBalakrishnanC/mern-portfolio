@@ -4,8 +4,11 @@ function Sidebar() {
       <h2>Admin</h2>
 
       <a href="/">Portfolio</a>
-      <span>Dashboard</span>
-      <span>Add Project</span>
+      <a href="#projects-admin">Add Project</a>
+      <a href="#skills-admin">Add Skill</a>
+      <a href="#certificates-admin">Add Certificate</a>
+      <a href="#messages-admin">Messages</a>
+      <a href="#password-admin">Password</a>
     </aside>
   );
 }

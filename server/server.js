@@ -15,10 +15,14 @@ app.use(express.json());
 const contactRoutes = require("./routes/contactRoutes");
 const projectRoutes = require("./routes/projectRoutes");
 const adminRoutes = require("./routes/adminRoutes");
+const skillRoutes = require("./routes/skillRoutes");
+const certificateRoutes = require("./routes/certificateRoutes");
 
 app.use("/api/admin", adminRoutes);
 app.use("/api/contact", contactRoutes);
 app.use("/api/projects", projectRoutes);
+app.use("/api/skills", skillRoutes);
+app.use("/api/certificates", certificateRoutes);
 
 // Root route
 app.get("/", (req, res) => {
@@ -32,8 +36,12 @@ mongoose.connect(process.env.MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
 
-    app.listen(PORT, () => {
-      console.log(`Server running on ${PORT}`);
-    });
+    if (require.main === module) {
+      app.listen(PORT, () => {
+        console.log(`Server running on ${PORT}`);
+      });
+    }
   })
   .catch(err => console.log(err));
+
+module.exports = app;
