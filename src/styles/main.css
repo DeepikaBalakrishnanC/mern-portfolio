@@ -1,0 +1,57 @@
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, #020617, #0f172a);
+  color: #e2e8f0;
+}
+
+/* Glass Effect */
+.glass {
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+}
+
+/* Gradient Text */
+.gradient-text {
+  background: linear-gradient(45deg, #38bdf8, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Button */
+.btn-main {
+  background: linear-gradient(45deg,#38bdf8,#6366f1);
+  padding: 10px 20px;
+  border-radius: 30px;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.glass:hover {
+  transform: translateY(-5px);
+  transition: 0.3s;
+}
+.project-card {
+  background: linear-gradient(135deg,#0f172a,#1e293b);
+}
+
+input {
+  display: block;
+  margin: 10px 0;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+  border: none;
+}
+
+button {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background: linear-gradient(45deg,#38bdf8,#6366f1);
+  border: none;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+}
