@@ -83,6 +83,23 @@ img {
   color: var(--accent);
 }
 
+.admin-link {
+  width: 38px;
+  height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.06);
+  font-size: 1rem;
+}
+
+.admin-link:hover {
+  border-color: rgba(34, 211, 238, 0.5);
+  background: rgba(34, 211, 238, 0.1);
+}
+
 .hero {
   min-height: calc(100svh - 68px);
   display: grid;
@@ -381,7 +398,7 @@ textarea:focus {
 }
 
 .admin-form {
-  width: min(560px, 100%);
+  width: 100%;
   padding: 24px;
 }
 
@@ -392,51 +409,162 @@ textarea:focus {
 .dashboard-shell {
   min-height: 100svh;
   display: grid;
-  grid-template-columns: 220px minmax(0, 1fr);
+  grid-template-columns: 260px minmax(0, 1fr);
+  background:
+    linear-gradient(135deg, rgba(34, 211, 238, 0.08), transparent 34%),
+    #020617;
 }
 
 .sidebar {
   position: sticky;
   top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
   min-height: 100svh;
-  padding: 24px;
-  background: rgba(2, 6, 23, 0.92);
+  padding: 28px 20px;
+  background: rgba(2, 6, 23, 0.96);
   border-right: 1px solid var(--line);
 }
 
-.sidebar h2 {
-  margin: 0 0 28px;
+.sidebar-kicker {
+  margin: 0 0 8px;
   color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
 }
 
-.sidebar a,
-.sidebar span {
-  display: block;
-  margin: 18px 0;
+.sidebar h2 {
+  margin: 0;
+  color: var(--text);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.sidebar-nav {
+  display: grid;
+  gap: 8px;
+}
+
+.sidebar-nav button,
+.sidebar-home {
+  width: 100%;
+  min-height: 44px;
+  justify-content: flex-start;
+  padding: 11px 14px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: transparent;
   color: var(--muted);
+  font-weight: 700;
+  text-align: left;
+}
+
+.sidebar-nav button:hover,
+.sidebar-nav button.active {
+  color: var(--text);
+  background: rgba(34, 211, 238, 0.1);
+  border-color: rgba(34, 211, 238, 0.26);
+}
+
+.sidebar-nav button.active {
+  box-shadow: inset 3px 0 0 var(--accent);
+}
+
+.sidebar-home {
+  margin-top: auto;
+  display: inline-flex;
+  align-items: center;
+  border-color: var(--line);
+}
+
+.sidebar-home:hover {
+  color: var(--accent);
+  border-color: rgba(34, 211, 238, 0.42);
 }
 
 .dashboard-page {
+  width: min(1180px, 100%);
   padding: clamp(24px, 5vw, 56px);
 }
 
 .dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  align-items: end;
   margin-bottom: 24px;
+  padding-bottom: 22px;
+  border-bottom: 1px solid var(--line);
 }
 
-.admin-section-grid {
+.dashboard-header p:not(.eyebrow) {
+  max-width: 680px;
+  margin: 14px 0 0;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+.dashboard-stats {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: flex-end;
+  min-width: min(360px, 100%);
+}
+
+.dashboard-stats span {
+  padding: 9px 12px;
+  color: #c7d2fe;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.dashboard-status {
+  display: inline-flex;
+  padding: 10px 14px;
+  margin: 0 0 18px;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid rgba(34, 211, 238, 0.24);
+  border-radius: 8px;
+}
+
+.dashboard-content-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
+  grid-template-columns: minmax(280px, 0.42fr) minmax(0, 1fr);
+  gap: 22px;
   align-items: start;
 }
 
-.admin-section-grid .admin-form {
-  width: 100%;
+.dashboard-content-grid.two-column {
+  grid-template-columns: minmax(280px, 0.38fr) minmax(0, 0.62fr);
 }
 
-.dashboard-section {
-  margin-top: 42px;
+.admin-panel {
+  padding: 22px;
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.admin-panel h2 {
+  margin: 0 0 16px;
+}
+
+.admin-form.admin-panel {
+  align-self: start;
+  position: sticky;
+  top: 24px;
+}
+
+.security-panel {
+  max-width: 620px;
 }
 
 .dashboard-section-title {
@@ -461,8 +589,14 @@ textarea:focus {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.dashboard-grid.compact {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-top: 0;
+}
+
 .dashboard-project {
   overflow: hidden;
+  background: rgba(255, 255, 255, 0.045);
 }
 
 .dashboard-project img {
@@ -473,6 +607,10 @@ textarea:focus {
 
 .dashboard-project div {
   padding: 16px;
+}
+
+.dashboard-project p {
+  overflow-wrap: anywhere;
 }
 
 .dashboard-project button {
@@ -487,14 +625,13 @@ textarea:focus {
 
 .message-card {
   display: grid;
-  grid-template-columns: minmax(180px, 0.45fr) minmax(0, 1fr) auto auto;
+  grid-template-columns: minmax(180px, 0.34fr) minmax(0, 1fr) minmax(120px, auto) auto;
   gap: 16px;
   align-items: start;
-  padding: 18px;
-  background: var(--panel-soft);
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.045);
   border: 1px solid var(--line);
   border-radius: 8px;
-  box-shadow: var(--shadow);
 }
 
 .message-card h3,
@@ -526,6 +663,7 @@ textarea:focus {
   display: flex;
   flex-wrap: wrap;
   gap: 12px;
+  align-content: start;
 }
 
 .admin-chip {
@@ -560,7 +698,9 @@ textarea:focus {
   .skills-grid,
   .project-grid,
   .dashboard-grid,
-  .admin-section-grid {
+  .dashboard-grid.compact,
+  .dashboard-content-grid,
+  .dashboard-content-grid.two-column {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -571,6 +711,28 @@ textarea:focus {
   .sidebar {
     position: static;
     min-height: auto;
+  }
+
+  .sidebar-nav {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .sidebar-home {
+    margin-top: 0;
+  }
+
+  .dashboard-header {
+    align-items: start;
+    flex-direction: column;
+  }
+
+  .dashboard-stats {
+    justify-content: flex-start;
+    min-width: 0;
+  }
+
+  .admin-form.admin-panel {
+    position: static;
   }
 
   .message-card {
@@ -592,7 +754,10 @@ textarea:focus {
   .project-grid,
   .certificate-grid,
   .dashboard-grid,
-  .admin-section-grid {
+  .dashboard-grid.compact,
+  .dashboard-content-grid,
+  .dashboard-content-grid.two-column,
+  .sidebar-nav {
     grid-template-columns: 1fr;
   }
 

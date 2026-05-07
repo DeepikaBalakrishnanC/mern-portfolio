@@ -1,14 +1,35 @@
-function Sidebar() {
+const navItems = [
+  { id: "projects", label: "Projects" },
+  { id: "skills", label: "Skills" },
+  { id: "certificates", label: "Certificates" },
+  { id: "messages", label: "Messages" },
+  { id: "password", label: "Password" },
+];
+
+function Sidebar({ activeView, onViewChange }) {
   return (
     <aside className="sidebar">
-      <h2>Admin</h2>
+      <div>
+        <p className="sidebar-kicker">Admin</p>
+        <h2>Portfolio Control</h2>
+      </div>
 
-      <a href="/">Portfolio</a>
-      <a href="#projects-admin">Add Project</a>
-      <a href="#skills-admin">Add Skill</a>
-      <a href="#certificates-admin">Add Certificate</a>
-      <a href="#messages-admin">Messages</a>
-      <a href="#password-admin">Password</a>
+      <nav className="sidebar-nav" aria-label="Admin sections">
+        {navItems.map((item) => (
+          <button
+            key={item.id}
+            className={activeView === item.id ? "active" : ""}
+            type="button"
+            onClick={() => onViewChange(item.id)}
+          >
+            {item.label}
+          </button>
+        ))}
+      </nav>
+
+      <a className="sidebar-home" href="/">
+        Back to Portfolio
+      </a>
     </aside>
   );
 }
